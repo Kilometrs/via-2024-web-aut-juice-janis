@@ -49,4 +49,8 @@ export class HomePage extends BasePage {
     return cy.get('[class="mat-focus-indicator close-dialog buttons mat-stroked-button mat-button-base"]');
   }
 
+  static get reviewTab() {
+    return cy.get('[aria-label="Expand for Reviews"]');
+  }
+
 }

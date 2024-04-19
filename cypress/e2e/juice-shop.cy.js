@@ -93,7 +93,7 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Search 500ml and validate cards
-    it.only("Search 500ml and validate cards",  () => {
+    it("Search 500ml and validate cards",  () => {
       // Click on search icon
       HomePage.searchButton.click();
       // Search for 500ml
@@ -117,11 +117,19 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Read a review
-    // Click on search icon
-    // Search for King
-    // Select a product card - OWASP Juice Shop "King of the Hill" Facemask
-    // Click expand reviews button/icon (wait for reviews to appear)
-    // Validate review - K33p5 y0ur ju1cy 5plu773r 70 y0ur53lf!
+    it.only("Read a review", () => {
+      // Click on search icon
+      HomePage.searchButton.click();
+      // Search for King
+      HomePage.searchInputField.type("King{enter}")
+      // Select a product card - OWASP Juice Shop "King of the Hill" Facemask
+      HomePage.cardByName.contains("King of the Hill").click();
+      // Click expand reviews button/icon (wait for reviews to appear)
+      cy.wait(200);
+      HomePage.reviewTab.click();
+      // Validate review - K33p5 y0ur ju1cy 5plu773r 70 y0ur53lf!
+      HomePage.searchResults.contains("K33p5 y0ur ju1cy 5plu773r 70 y0ur53lf!");
+    });
 
     // Create scenario - Add a review
     // Click on search icon
