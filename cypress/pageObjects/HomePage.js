@@ -45,6 +45,8 @@ export class HomePage extends BasePage {
     return cy.get('app-product-details');
   }
 
-
+  static get closeButton() {
+    return cy.get('[class="mat-focus-indicator close-dialog buttons mat-stroked-button mat-button-base"]');
+  }
 
 }
