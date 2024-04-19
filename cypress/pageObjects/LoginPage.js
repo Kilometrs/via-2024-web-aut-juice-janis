@@ -25,4 +25,5 @@ export class LoginPage extends BasePage {
   static get regHyperlink() {
     return cy.get('[href="#/register"]');
   }
+
 }

@@ -1,5 +1,6 @@
 import { HomePage } from "../pageObjects/HomePage";
 const {LoginPage} = require("../pageObjects/LoginPage");
+const {RegistrationPage} = require("../pageObjects/RegistrationPage");
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -34,18 +35,32 @@ describe("Juice-shop scenarios", () => {
       // Click "Not yet a customer?"
       LoginPage.regHyperlink.click();
       // Find - how to generate random number in JS
+      const randomNumber = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
       // Use that number to genarate unique email address, e.g.: email_7584@ebox.com
       // Save that email address to some variable
+      const email = "email_" +  randomNumber + "@shrexbox.com";
+      RegistrationPage.registrationEmailField.type(email);
       // Fill in password field and repeat password field with same password
+      const password = "JanisIrKruc369-";
+      RegistrationPage.fillPasswordFields(password);
       // Click on Security Question menu
+      RegistrationPage.securityQuestionDropdown.click();
       // Select  "Name of your favorite pet?"
+      RegistrationPage.securityQuestionOption("Name of your favorite pet?").click();
       // Fill in answer
+      RegistrationPage.securityQuestionAnswer.type("Shrek");
       // Click Register button
+      RegistrationPage.btnRegister.click();
       // Set email value to previously created email
+      LoginPage.emailTxtField.type(email);
       // Set password value to previously used password value
+      LoginPage.passwordTxtField.type(password);
       // Click login button
+      LoginPage.formLoginBtn.click();
       // Click Account button
+      HomePage.accountBtn.click();
       // Validate that account name (with previously created email address) appears in the menu section
+      HomePage.accountDropdownAccountName.contains(email);
     });
   });
 
