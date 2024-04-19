@@ -7,6 +7,8 @@ const { DeliveryMethodPage } =require( "../pageObjects/DeliveryMethodPage");
 const {PaymentOptionsPage} = require("../pageObjects/PaymentOptionsPage");
 const {OrderSummaryPage} = require("../pageObjects/OrderSummaryPage");
 const {OrderCompletionPage} = require("../pageObjects/OrderCompletionPage");
+const {SavedAddressesPage} = require("../pageObjects/SavedAddressesPage");
+const {CreateAddressPage} = require("../pageObjects/CreateAddressPage");
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -219,14 +221,26 @@ describe("Juice-shop scenarios", () => {
     // Create scenario - Add address
     it.only("Add address", () => {
       // Click on Account
+      HomePage.accountBtn.click();
       // Click on Orders & Payment
+      cy.wait(200);
+      HomePage.ordersMenu.click();
       // Click on My saved addresses
+      cy.wait(200);
+      HomePage.savedAddressesBtn.click({ multiple: true });
       // Create page object - SavedAddressesPage
       // Click on Add New Address
+      SavedAddressesPage.addNewAddressBtn.click();
       // Create page object - CreateAddressPage
-      // Fill in the necessary information
-      // Click Submit button
+      CreateAddressPage.countryTxtField.type('Murica');
+      CreateAddressPage.nameTxtField.type('John Doe');
+      CreateAddressPage.numberTxtField.type('1234567890');
+      CreateAddressPage.zipCodeTxtField.type('12345');
+      CreateAddressPage.addressTxtField.type('123 Main St');
+      CreateAddressPage.cityTxtField.type('New York');
+      CreateAddressPage.submitBtn.click();
       // Validate that previously added address is visible
+      CreateAddressPage.addressList.contains("John Doe");
     });
 
     // Create scenario - Add payment option

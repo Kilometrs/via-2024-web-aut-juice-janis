@@ -79,4 +79,12 @@ export class HomePage extends BasePage {
   static get openCartBtn() {
     return cy.get('[aria-label="Show the shopping cart"]');
   }
+
+  static get ordersMenu() {
+    return cy.get('[aria-label="Show Orders and Payment Menu"]').filter('button');
+  }
+
+  static get savedAddressesBtn() {
+    return cy.get('[aria-label="Go to saved address page"]');
+  }
 }
