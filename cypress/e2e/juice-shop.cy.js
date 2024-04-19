@@ -175,7 +175,7 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Buy Girlie T-shirt
-    it.only("Buy Girlie T-shirt", () => {
+    it("Buy Girlie T-shirt", () => {
       // Click on search icon
       HomePage.searchButton.click();
       // Search for Girlie
@@ -217,15 +217,17 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Add address
-    // Click on Account
-    // Click on Orders & Payment
-    // Click on My saved addresses
-    // Create page object - SavedAddressesPage
-    // Click on Add New Address
-    // Create page object - CreateAddressPage
-    // Fill in the necessary information
-    // Click Submit button
-    // Validate that previously added address is visible
+    it.only("Add address", () => {
+      // Click on Account
+      // Click on Orders & Payment
+      // Click on My saved addresses
+      // Create page object - SavedAddressesPage
+      // Click on Add New Address
+      // Create page object - CreateAddressPage
+      // Fill in the necessary information
+      // Click Submit button
+      // Validate that previously added address is visible
+    });
 
     // Create scenario - Add payment option
     // Click on Account
