@@ -60,4 +60,15 @@ export class HomePage extends BasePage {
   static get submitReviewButton() {
     return cy.get('[id="submitButton"]');
   }
+  static get cardList() {
+    return cy.get('.mat-grid-list mat-card');
+  }
+
+  static get showCardCount() {
+    return cy.get('[id="mat-select-0"]');
+  }
+
+  static get cardCountDropdownOption() {
+    return cy.get('[class="mat-option-text"]');
+  }
 }
