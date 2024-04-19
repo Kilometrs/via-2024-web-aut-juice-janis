@@ -1,6 +1,12 @@
 import { HomePage } from "../pageObjects/HomePage";
 const {LoginPage} = require("../pageObjects/LoginPage");
 const {RegistrationPage} = require("../pageObjects/RegistrationPage");
+const {BasketPage} = require("../pageObjects/BasketPage");
+const {SelectAddressPage} = require("../pageObjects/SelectAddressPage");
+const { DeliveryMethodPage } =require( "../pageObjects/DeliveryMethodPage");
+const {PaymentOptionsPage} = require("../pageObjects/PaymentOptionsPage");
+const {OrderSummaryPage} = require("../pageObjects/OrderSummaryPage");
+const {OrderCompletionPage} = require("../pageObjects/OrderCompletionPage");
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -121,7 +127,7 @@ describe("Juice-shop scenarios", () => {
       // Click on search icon
       HomePage.searchButton.click();
       // Search for King
-      HomePage.searchInputField.type("King{enter}")
+      HomePage.searchInputField.type("King{enter}");
       // Select a product card - OWASP Juice Shop "King of the Hill" Facemask
       HomePage.cardByName.contains("King of the Hill").click();
       // Click expand reviews button/icon (wait for reviews to appear)
@@ -136,7 +142,7 @@ describe("Juice-shop scenarios", () => {
       // Click on search icon
       HomePage.searchButton.click();
       // Search for Raspberry
-      HomePage.searchInputField.type("Raspberry{enter}")
+      HomePage.searchInputField.type("Raspberry{enter}");
       // Select a product card - Raspberry Juice (1000ml)
       HomePage.cardByName.contains("Raspberry Juice (1000ml)").click();
       // Type in review - "Tastes like metal"
@@ -153,7 +159,7 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Validate product card amount
-    it.only("Validate product card amount", () => {
+    it("Validate product card amount", () => {
       // Validate that the default amount of cards is 12
       HomePage.cardList.should("have.length", 12);
       // Change items per page (at the bottom of page) to 24
@@ -169,25 +175,46 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Buy Girlie T-shirt
-    // Click on search icon
-    // Search for Girlie
-    // Add to basket "Girlie"
-    // Click on "Your Basket" button
-    // Create page object - BasketPage
-    // Click on "Checkout" button
-    // Create page object - SelectAddressPage
-    // Select address containing "United Fakedom"
-    // Click Continue button
-    // Create page object - DeliveryMethodPage
-    // Select delivery speed Standard Delivery
-    // Click Continue button
-    // Create page object - PaymentOptionsPage
-    // Select card that ends with "5678"
-    // Click Continue button
-    // Create page object - OrderSummaryPage
-    // Click on "Place your order and pay"
-    // Create page object - OrderCompletionPage
-    // Validate confirmation - "Thank you for your purchase!"
+    it.only("Buy Girlie T-shirt", () => {
+      // Click on search icon
+      HomePage.searchButton.click();
+      // Search for Girlie
+      HomePage.searchInputField.type("Girlie{enter}");
+      // Add to basket "Girlie"
+      HomePage.addToBasketBtn.click();
+      // Click on "Your Basket" button
+      HomePage.openCartBtn.click();
+      // Create page object - BasketPage
+      // Click on "Checkout" button
+      BasketPage.checkoutButton.click();
+      // Create page object - SelectAddressPage
+      // Select address containing "United Fakedom"
+      SelectAddressPage.addressList.contains("United Fakedom").click();
+      // Click Continue button
+      SelectAddressPage.continueBtn.click();
+      // Create page object - DeliveryMethodPage
+      // Select delivery speed Standard Delivery
+      DeliveryMethodPage.deliveryOptionList.contains("Standard Delivery").click();
+      // Click Continue button
+      DeliveryMethodPage.continueBtn.click();
+      // Create page object - PaymentOptionsPage
+      // Select card that ends with "5678"
+      PaymentOptionsPage.paymentCardList
+      .contains("5678")
+      .closest('mat-row')
+      .find('[class="mat-radio-label"]')
+      .click();
+      
+      // Click Continue button
+      PaymentOptionsPage.continueBtn.click();
+      // Create page object - OrderSummaryPage
+      // Click on "Place your order and pay"
+      OrderSummaryPage.checkoutBtn.click();
+      
+      // Create page object - OrderCompletionPage
+      OrderCompletionPage.orderDetails.contains("Thank you for your purchase!")
+      // Validate confirmation - "Thank you for your purchase!"
+    });
 
     // Create scenario - Add address
     // Click on Account

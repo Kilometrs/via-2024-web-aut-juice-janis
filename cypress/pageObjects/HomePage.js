@@ -71,4 +71,12 @@ export class HomePage extends BasePage {
   static get cardCountDropdownOption() {
     return cy.get('[class="mat-option-text"]');
   }
+
+  static get addToBasketBtn() {
+    return cy.get('[aria-label="Add to Basket"]');
+  }
+
+  static get openCartBtn() {
+    return cy.get('[aria-label="Show the shopping cart"]');
+  }
 }
