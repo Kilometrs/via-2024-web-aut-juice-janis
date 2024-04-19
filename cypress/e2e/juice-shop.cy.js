@@ -245,7 +245,7 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Add payment option
-    it.only("Add payment option", () => {
+    it("Add payment option", () => {
       // Click on Account
       HomePage.accountBtn.click();
       // Click on Orders & Payment
