@@ -25,4 +25,26 @@ export class HomePage extends BasePage {
     return cy.get('[aria-label="Go to user profile"]');
   }
 
+  static get searchButton() {
+    return cy.get('[id="searchQuery"]');
+  }
+
+  static get searchInputField() {
+    return cy.get('[id="mat-input-0"]');
+  }
+
+  static get searchResults() {
+    return cy.get('[class="ng-star-inserted"]');
+  }
+
+  static get cardByName() {
+    return cy.get('[class="item-name"]');
+  }
+
+  static get itemPopup() {
+    return cy.get('app-product-details');
+  }
+
+
+
 }
