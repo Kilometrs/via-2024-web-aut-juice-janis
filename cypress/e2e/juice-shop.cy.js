@@ -1,4 +1,5 @@
 import { HomePage } from "../pageObjects/HomePage";
+const {LoginPage} = require("../pageObjects/LoginPage");
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -10,18 +11,28 @@ describe("Juice-shop scenarios", () => {
 
     it("Login", () => {
       // Click Account button
+      HomePage.accountBtn.click();
       // Click Login button
+      HomePage.navBarLoginBtn.click();
       // Set email value to "demo"
+      LoginPage.emailTxtField.type("demo");
       // Set password value to "demo"
+      LoginPage.passwordTxtField.type("demo");
       // Click Log in
+      LoginPage.formLoginBtn.click();
       // Click Account button
+      HomePage.accountBtn.click();
       // Validate that "demo" account name appears in the menu section
+      HomePage.accountDropdownAccountName.contains('demo');
     });
 
-    it("Registration", () => {
+    it.only("Registration", () => {
       // Click Account button
+      HomePage.accountBtn.click();
       // Login button
+      HomePage.navBarLoginBtn.click();
       // Click "Not yet a customer?"
+      LoginPage.regHyperlink.click();
       // Find - how to generate random number in JS
       // Use that number to genarate unique email address, e.g.: email_7584@ebox.com
       // Save that email address to some variable
