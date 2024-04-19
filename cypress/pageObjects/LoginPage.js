@@ -9,7 +9,6 @@ export class LoginPage extends BasePage {
     return cy.get("elementSelector");
   }
 
-
   static get formLoginBtn() {
     return cy.get('[id="loginButton"]');
   }

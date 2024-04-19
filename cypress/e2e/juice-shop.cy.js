@@ -70,7 +70,7 @@ describe("Juice-shop scenarios", () => {
       HomePage.visit();
     });
 
-    it.only("Search and validate Lemon", () => {
+    it("Search and validate Lemon", () => {
       // Click on search icon
       HomePage.searchButton.click();
       // Search for Lemon
@@ -81,11 +81,16 @@ describe("Juice-shop scenarios", () => {
       HomePage.itemPopup.contains("Sour but full of vitamins.");
     });
 
-    // Create scenario - Search 500ml and validate Lemon, while having multiple cards
-    // Click on search icon
-    // Search for 500ml
-    // Select a product card - Lemon Juice (500ml)
-    // Validate that the card (should) contains "Sour but full of vitamins."
+    it.only("Search and validate Lemon /w multiple cards", () => {
+      // Click on search icon
+      HomePage.searchButton.click();
+      // Search for 500ml
+      HomePage.searchInputField.type("500ml")
+      // Select a product card - Lemon Juice (500ml)
+      HomePage.cardByName.contains("Lemon Juice (500ml)").click();
+      // Validate that the card (should) contains "Sour but full of vitamins."
+      HomePage.itemPopup.contains("Sour but full of vitamins.");
+    });
 
     // Create scenario - Search 500ml and validate cards
     // Click on search icon
