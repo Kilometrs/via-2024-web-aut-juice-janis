@@ -53,4 +53,11 @@ export class HomePage extends BasePage {
     return cy.get('[aria-label="Expand for Reviews"]');
   }
 
+  static get reviewTextField(){
+    return cy.get('[data-placeholder="What did you like or dislike?"]');
+  }
+
+  static get submitReviewButton() {
+    return cy.get('[id="submitButton"]');
+  }
 }
