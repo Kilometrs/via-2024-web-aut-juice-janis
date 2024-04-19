@@ -87,4 +87,8 @@ export class HomePage extends BasePage {
   static get savedAddressesBtn() {
     return cy.get('[aria-label="Go to saved address page"]');
   }
+
+  static get paymentOptionsBtn() {
+    return cy.get('[aria-label="Go to saved payment methods page"]');
+  }
 }
